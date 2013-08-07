@@ -40,6 +40,7 @@ function select_donut()
 {
   if($(this).prev().length === 0)
   {
+    $(".selected").removeClass("selected");
     $(this).addClass("selected");
     selected = $(this);
   }
@@ -53,10 +54,7 @@ function select_peg()
   {
     if(div.children().length == 0 || is_bigger(div.children().first()))
     {
-      selected.detach();
-      $(selected).removeClass("selected");
-      div.prepend(selected);
-      selected=null;
+      move_donut(div);
     }
     else
     {
@@ -88,6 +86,12 @@ function is_bigger(e)
 
 }// end of is_bigger
 
+function move_donut(peg) {
+  selected.detach();
+  $(selected).removeClass("selected");
+  peg.prepend(selected);
+  selected=null;
+}
 
 function reset_page()
 {
