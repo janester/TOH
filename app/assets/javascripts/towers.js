@@ -9,7 +9,6 @@ $(function(){
 
 var timer = null;
 var selected;
-var widths = [];
 var start_time = 0;
 
 function start_game()
@@ -18,16 +17,16 @@ function start_game()
   if(num === "")
   {
     num = 3;
-  }
+  }// end of if
   num = parseInt(num, 10);
   for (var i=0; i<num; i++)
   {
     var div = $("<div>").addClass("donut");
     div.css("width", ((i+1)*50)+"px");
     $("#peg1").append(div);
-  }
+  }// end of for loop
   timer = setInterval(show_clock, 1000);
-}
+}// end of start game
 
 function show_clock()
 {
@@ -49,35 +48,46 @@ function select_donut()
 function select_peg()
 {
   var div = $(this).parent().next();
-  _.each(div.children(), is_bigger);
-  if(_.contains(widths, "no"))
+
+  if(selected != null)
   {
-    $("#message").show().text("Sorry! That donut can't go there. It is larger than the existing donut(s).").fadeOut(3000);
+    if(div.children().length == 0 || is_bigger(div.children().first()))
+    {
+      selected.detach();
+      $(selected).removeClass("selected");
+      div.prepend(selected);
+      selected=null;
+    }
+    else
+    {
+      $("#message").show().text("Sorry! That donut can't go there. It is larger than the existing donut(s).").fadeOut(3000);
+    }
   }
   else
   {
-    selected.detach();
-    $(selected).removeClass("selected");
-    div.prepend(selected);
+    $("#message").show().text("Select a donut first!").fadeOut(3000);
+
   }
-  widths = [];
 }
 
 function is_bigger(e)
 {
+
   var a = selected.css("width").replace("px", "");
   a = parseInt(a, 10);
   var b = $(e).css("width").replace("px", "");
   b = parseInt(b, 10);
   if(b < a)
   {
-    widths.push("no");
+    return false;
   }
   else
   {
-    widths.push("yes");
+    return true;
   }
-}
+
+}// end of is_bigger
+
 
 function reset_page()
 {
