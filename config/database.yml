@@ -1,0 +1,10 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: towers_of_hanoi_development
+  pool: 5
+  host: localhost
+  username: janesternbach
+  password:
+

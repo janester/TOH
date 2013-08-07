@@ -1,0 +1,26 @@
+.donut {
+  background: red;
+  height: 30px;
+  margin: auto;
+}
+
+.container {
+  display: inline-block;
+}
+.peg {
+  height: 500px;
+  width: 400px;
+  border: 1px solid black;
+  margin: 10px;
+  text-align: center;
+  vertical-align: baseline;
+}
+
+
+#pegs {
+  text-align: center;
+}
+
+.selected {
+  background: blue;
+}

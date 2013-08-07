@@ -1,0 +1,21 @@
+%h1 Towers of Hanoi
+
+#user_input
+  = text_field_tag :num_donuts
+  = link_to("Start", "#", :id => "start_btn")
+  = link_to("Reset", "#", :id => "reset_btn")
+#timer
+#message
+
+
+#pegs
+  .container
+    .add= link_to("add donut here", "#", :id => "add1")
+    #peg1.peg
+  .container
+    .add= link_to("add donut here", "#", :id => "add2")
+    #peg2.peg
+  .container
+    .add= link_to("add donut here", "#", :id => "add3")
+    #peg3.peg
+
